@@ -1,6 +1,6 @@
 void main() {
-  final String name = "Hello World";
-  // name = 안녕 세상아; //final로 선언한 변수는 업뎃, 재지정 (X)
+  final String name = 'Hello World';
+  // name = '안녕 세상아';  //final로 선언한 변수는 업뎃,재지정 :: (X)
   print(name);
   print(name.runtimeType);
 
@@ -14,8 +14,7 @@ void main() {
   print(now.runtimeType);
 
   // const 실행할 때 초기화 되는 상수에 사용 불가
-  const DateTime now2 = DateTime.now();
-  print(now2);
-  print(now2.runtimeType);
+  // const DateTime now2 = DateTime.now();
+
 
 }
