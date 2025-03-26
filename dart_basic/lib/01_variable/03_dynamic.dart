@@ -3,12 +3,13 @@ void main() {
   dynamic name = "Hello";
   print(name);
   print(name.runtimeType);
-  name = true ; // 타입 고정 x
+  name = true;  // 타입 고정(X)
   print(name);
   print(name.runtimeType);
-  // dynamic name = 10; // 재선언 x
-  name = 10.123;
+  // dynamic name = 10; // 재선언 (X)
+  name = 10.123;  // 업뎃(O)
   print(name);
   print(name.runtimeType);
+
 
 }
