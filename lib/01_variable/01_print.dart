@@ -6,7 +6,7 @@ void main() {
   */
 
   print("="*30);
-  print("❤"+10.toString());
+  print("❤${10}");
 
   for (var i = 0; i < 10; i++) {
     print('hello${i+1}');
