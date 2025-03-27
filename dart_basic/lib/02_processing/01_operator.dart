@@ -53,31 +53,37 @@ void main() {
   print(a | b);
   print(a ^ b);
   print(~b);
-  print(b<<2); //왼쪽 시프트
-  print(a>>2); //오른쪽 시프트
+  print(b << 2); //왼쪽 시프트
+  print(a >> 2); //오른쪽 시프트
 
   // 삼항 연산자(Conditional Operators)
-  print(a>b?"big":a==b?"same":"small");
+  print(
+    a > b
+        ? "big"
+        : a == b
+        ? "same"
+        : "small",
+  );
 
   // Null 관련 연산자(Null-aware Operators)
-  print("="*10+"Null 관련 연산자"+"="*10);
-  String? name = null; //Nullable 변수 선언::String 이지만 null 일수도 있다.
-  // name ="Dart";
-  // name = 100;
-  // print(name!.length);   // Null 강제 해제 :: null이면 아닙을 확신할 때
-  print(name?.length);    // Null-aware 접근 :: null이면 null을 반환
-  print(name ?? "Guest");   // Null 병합 연산자 :: null이면 기본값 제공
+  print("=" * 10 + "Null 관련 연산자" + "=" * 10);
+  String? name = null; //Nullable 변수 선언::String 이지만 null일수도 있다.
+  // name = "Dart"; // name = 100;
+  // print(name!.length); // Null 강제 해제::null 아님을 확신할 때
+  print(name?.length); // Null-aware 접근::null이면 null을 반환
+  print(name ?? "Guest"); // Null 병합 연산자::null이면 기본값 제공
   print(name);
-  name ??= "Guest"; // Null 병합 활당 연산자 :: null이면 기본값 활당
+  name ??= "Guest"; // Null 병합 할당 연산자::null이면 기본값 할당
   print(name);
   List<int>? numbers;
-  List<int>? result = [1, 2, 3, ...?numbers];
+  List<int> result = [1, 2, 3, ...?numbers];// Null-aware 리스트확장
   print(result);
   numbers = [4, 5, 6];
-  result = [1, 2, 3, ...?numbers]; // 활당된 값이 있을 때 구조분해할당
+  result = [1, 2, 3, ...?numbers]; //할당된 값이 있을 때 구조분해할당
   print(result);
   String? text;
-  print(text?.toUpperCase()); // Null-aware 함수 호출
+  print(text?.toUpperCase()); //Null-aware 함수 호출
   text = "Dart";
-  print(text?.toUpperCase()); // Null-aware 함수 호출안하고 반환
+  print(text?.toUpperCase()); //null이면 함수 호출 안하고 null 반환
+
 }
