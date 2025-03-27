@@ -70,4 +70,14 @@ void main() {
   print(name);
   name ??= "Guest"; // Null 병합 활당 연산자 :: null이면 기본값 활당
   print(name);
+  List<int>? numbers;
+  List<int>? result = [1, 2, 3, ...?numbers];
+  print(result);
+  numbers = [4, 5, 6];
+  result = [1, 2, 3, ...?numbers]; // 활당된 값이 있을 때 구조분해할당
+  print(result);
+  String? text;
+  print(text?.toUpperCase()); // Null-aware 함수 호출
+  text = "Dart";
+  print(text?.toUpperCase()); // Null-aware 함수 호출안하고 반환
 }
