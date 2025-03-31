@@ -24,7 +24,7 @@ int add2Combine(int a, {required int b, int c= 4}) {
   return a + b + c;
 }
 
-// 4) 매개변수로 익명함수 사용
+// 4) 매개변수로 익명함수 사용 (함수명 또는 함수 선언부)
 void expFnc(Function callback){ callback(); }
 void expFnc1(void Function() callback) {callback();}
 void expFnc2(void Function(int, int) callback, int a, int b) {callback(5, 5);}

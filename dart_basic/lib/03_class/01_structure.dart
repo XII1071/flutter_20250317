@@ -24,6 +24,7 @@ class Person {
     print("안녕하세요? 저는 $name이고 나이는 $age입니다.");
   }
 }
+
 class Idol {
   // 속성 선언시 초기화해야 하나, late, var, dynamic일 경우 후에 초기화 가능
   late List<Person> p; // 복수의 Person 선언
@@ -39,5 +40,6 @@ class Mammal {
   // 생성자 활용할 경우 즉시 초기화하지 않아도 된다
   String name;
   Mammal(String name) : this.name=name;
+
 
 }
