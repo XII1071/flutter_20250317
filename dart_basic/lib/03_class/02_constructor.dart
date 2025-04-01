@@ -2,7 +2,7 @@ void main() {
   Company c = Company(); // 기본 생성자 사용가능,fetchData() 로드 안됨.
   print(c.data); // 이때 비로서 fetchData()실행하여 메모리 사용.
 
-  // Idol idol = Idol(); 생성자 추가 되어 기본 생성자 사용 불가.
+  // Idol idol = Idol(); // 생성자 추가 되어 기본 생성자 사용 불가.
   Idol i1 = Idol("소녀시대", "SM");
   Idol i2 = Idol.fromMap({'_name': 'BTS', 'company': "Hive"});
   print(i1.toString());
@@ -20,6 +20,22 @@ class Company {
   String fetchData() {
     return "loading"+"."*100;
   }
+
+  // 생성자 종류 2가지(오버로딩이 불가)
+  //1) 기본 생성자 :: 매개변수가 다양하게 있어도 같은 기본 생성자임.
+  Company();
+  // Company(String name, String company): this.name=name, this.money=1000;
+  // Company(this.name, this.money); // 윗줄과 같은 기능.
+
+  //2) named 생성자 :: 메서드 오버로딩 불가하므로 named생성자를 사용.
+  Company.namedConstructor() {
+    print("Generated Named constructor in Parent");
+  }
+  Company.withValue(this.name);
+  Company.named(String name) {
+    print("Generated $name constructor in Parent");
+  }
+  Company.fromMap(Map<String, dynamic> map): this.name=map['name'], this.money=map['money'];
 }
 
 class Idol {

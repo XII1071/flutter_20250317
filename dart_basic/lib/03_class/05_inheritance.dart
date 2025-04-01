@@ -3,14 +3,14 @@ void main() {
   child.instanceSay();
   print(Parent.staticVar);
   Parent.staticSay();
-  // static 변수 메서드 상속 불가
-  // print(Child.staticSay);
+  // static 변수와 메서드는 자식에게 상속 불가
+  // print(Child.staticVar);
   // Child.staticSay();
 
   var parent1 = Parent();
   var child1 = Child();
-  var parent = Parent.namedConstructor();
-  // var child2 = Parent.namedConstructor(); // namedConstructor 상속불가
+  var parent2 = Parent.named("Lee");
+  // var child2 = Child.named(); // namedConstructor상속불가
 }
 
 class Parent {
@@ -19,22 +19,26 @@ class Parent {
 
   void instanceSay() {print("Instance Method from Parent");}
   static void staticSay() {print("Static Method from Parent");}
-  // dart 에서는 메서드 생성자 오버로딩이 불가하므로 named 생성자를 생성할 수 있다.
-  Parent.namedConstructor() {
-    print("Named constructor in Parent");
-  }
+
   Parent();
-  Parent.whitValue(this.instanceVar);
+  Parent.named(String name) {
+    print("Generated $name constructor in Parent");
+  }
+
+  // 인스턴스 생성 후에 같은 인스턴스와 +라는 연산이 일어날 때를 정의
   Parent operator + (Parent other) {
-    return Parent.whitValue(instanceVar + other.instanceVar);
+    return Parent.named(instanceVar + other.instanceVar);
   }
 }
+// 상속 가능 요소 : 인스턴스 변수( _로 시작하는 변수 제외) 및 메서드, Getter/Setter
+// 상속 불가 요소 : 생성자, static 변수 및 메서드, _로 시작하는 변수,
+
 class Child extends Parent{
   void childMethod() {
     print(instanceVar);
     print(Parent.staticVar);
-    // print(Child.staticVar); //dart에서는 static 변수 상속 불가
+    // print(staticVar); //dart에서는 static 변수는 상속 불가
     instanceSay();
-    // sayStatic(); // dart에서는 static 메서드는 상속 불가
+    // staticSay(); //dart에서는 static 메서드는 상속 불가
   }
 }
