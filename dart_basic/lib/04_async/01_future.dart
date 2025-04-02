@@ -6,16 +6,22 @@ void main() async {
   // 미래에 받을 값이 없을 때
   Future<void> doNothing;
 
-  // 1) 예제
+  // 1) Future만 적용해 보기
   // addNumbers(1, 1);
 
-  // 2) 예제
+  // 2) Fututre, async, await 적용하기
   // addNumbers2(1, 1);
   // addNumbers2(2, 2);
 
-  // 3) 예제
-  await addNumbers3(1, 1);
-  await addNumbers3(2, 2);
+  // 3) main에 asyc하고 함수 리턴에 Future<void> 적용하기
+  // await addNumbers3(1, 1);
+  // await addNumbers3(2, 2);
+
+  // 4) 결과 값 받기 함수 리턴에 Future<int> 적용하기
+  final result = await addNumbers4(1, 1);
+  print('결과값 $result');  // 일반 함수와 동일하게 반환값을 받을 수 있음
+  final result2 = await addNumbers4(2, 2);
+  print('결과값 $result2');
 }
 
 void addNumbers(int number1, int number2) {
@@ -43,4 +49,13 @@ Future<void> addNumbers3(int number1, int number2) async {
     print('$number1 + $number2 = ${number1 + number2}');
   });
   print('$number1 + $number2 코드 실행 끝');
+}
+
+Future<int> addNumbers4(int number1, int number2) async {
+  print('$number1 + $number2 계산 시작!');
+  await Future.delayed(Duration(seconds: 3), () {
+    print('$number1 + $number2 = ${number1 + number2}');
+  });
+  print('$number1 + $number2 코드 실행 끝');
+  return number1 + number2;
 }
