@@ -1,4 +1,6 @@
 void main() {
+  // 해당 데이터가 아주 짧은 생명주기를 가질 때 사용하며 권장. 상속 불가
+  // 클래스로 만들기에 애매하지만, 연관성이 있는 변수 묶을 수 있음.
   // Positional Parameter 형태로 Record 선언, 순서에 따른다.
   (String, int) person = ('길동', 20);
   // (String, int) person = (20, '길동');

@@ -25,7 +25,7 @@ void main() {
       print("1~12까지 입력하세요");
   }
 
-  // 2) Switch Expressions :: =>
+  // 2) Switch Expression :: =>
   var season = switch (score2) {
     6 || 7 || 8 => 'Born in Summer',
     9 || 10 => 'Born in Fall',
@@ -61,7 +61,7 @@ void main() {
         print('match: [1, 2]');
         break;
       case [_, _, _]:
-        print('match [_,_,_]');
+        print('match [_,_,_]*');
         break;
       case [int a, int b]:
         print('match: [int $a, int $b]');
@@ -75,9 +75,9 @@ void main() {
   }
 
   switcher('aaa');
-  switcher([1, 2]);
+  switcher([1, 3, 4]);
 
-  // 5) Exhaustiveness Checking
+  // 5) Exhaustiveness Checking(완전 확인)
   bool? val2; // true, false, null 3가지 조건 모두 적용해줘야 함.
   switch (val2) {
     case true:
@@ -86,7 +86,7 @@ void main() {
       print('false');
     case null:
     // TODO: Handle this case.
-      throw UnimplementedError();
+    // throw UnimplementedError();
   }
 
   // 6) 중첩 switch 문

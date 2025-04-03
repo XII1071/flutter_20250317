@@ -1,12 +1,12 @@
 import '04_modifiers.dart';
 
-// base :: 오직 상속만 가능.
+// 오직 base 붙은 클래스 끼리만 상속 가능.
 Parent parent = Parent();
 base class Child1 extends Parent{}
 // class Child2 extends Parent{}
 // class Child3 implements Parent{}
 
-// final :: extends, implements 불가.
+// final :: 외부에서 base, extends, implements 불가.
 Parent2 parent2 = Parent2();
 // base class Child21 extends Parent2{}
 // class Child22 extends Parent2{}

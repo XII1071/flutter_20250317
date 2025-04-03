@@ -33,6 +33,9 @@ void main() async {
   DateTime pastDate = now.subtract(Duration(days: 5));
   print("5일 전: $pastDate");
 
+  // 당월 마지막날 구하기
+  print(getDate(DateTime(2025,3,1).subtract(Duration(days: 1))));
+
   //두 날짜 차이 계산
   DateTime startDate = DateTime(2025, 4, 1);
   DateTime endDate = DateTime(2025, 4, 15);
@@ -66,6 +69,7 @@ void main() async {
   print("오늘은 ${getWeekdayName(now.weekday)}요일입니다.");
 
   print(getDate(now));
+  print(getTime(now));
 
 }
 
@@ -76,6 +80,10 @@ String getWeekdayName(int weekday) {
 
 String getDate(DateTime dt) {
   return '${dt.year.toString()}-${digit2(dt.month)}-${digit2(dt.day)} ';
+}
+
+String getTime (DateTime dt) {
+  return '${digit2(dt.hour)}:${digit2(dt.minute)}:${digit2(dt.second)} ';
 }
 
 String digit2(int val) {
