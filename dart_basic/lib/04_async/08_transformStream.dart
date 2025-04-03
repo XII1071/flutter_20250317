@@ -33,8 +33,29 @@ void main() async {
         }
       }
   );
-
   Stream<int> filteredStream = numberStream.transform(evenFilterTrans);
   filteredStream.listen((data) {print("even value: $data");});
+  await Future.delayed(Duration(seconds: 0));
+
+  //4) 여러 개의 변환 적용하기 (transform().transform())
+  final doubleTransformer = StreamTransformer<int, int>.fromHandlers(
+    handleData: (int value, EventSink<int> sink) {
+      sink.add(value * 2);
+    },
+  );
+
+  final stringTransformer = StreamTransformer<int, String>.fromHandlers(
+    handleData: (int value, EventSink<String> sink) {
+      sink.add("3. 변환된 값: $value");
+    },
+  );
+
+  Stream<String> transformedStream3 = numberStream
+      .transform(doubleTransformer)  // 먼저 값을 2배로 변환
+      .transform(stringTransformer); // 그다음 문자열로 변환
+
+  transformedStream3.listen((data) {
+    print(data);
+  });
 
 }
