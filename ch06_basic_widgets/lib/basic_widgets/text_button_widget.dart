@@ -11,12 +11,13 @@ class TextButtonWidgetExample extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               // Fluttertoast.showToast(
-              //   msg: "버튼이 클릭되었습니다",
+              //   msg: "버튼이 클릭되었습니다.",
               //   toastLength: Toast.LENGTH_SHORT,
               //   gravity: ToastGravity.BOTTOM,
               //   timeInSecForIosWeb: 1,
               // );
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
                   content: Text("스낵바가 올라왔습니다."),
                   duration: Duration(seconds: 2),
                 ),
