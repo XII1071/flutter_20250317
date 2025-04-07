@@ -1,4 +1,6 @@
 import 'package:ch06_basic_widgets/widgets/elevated_button_widget.dart';
+import 'package:ch06_basic_widgets/widgets/floating_action_button_widget.dart';
+import 'package:ch06_basic_widgets/widgets/gesture_detector_widget.dart';
 import 'package:ch06_basic_widgets/widgets/icon_button_widget.dart';
 import 'package:ch06_basic_widgets/widgets/outlined_button_widget.dart';
 import 'package:ch06_basic_widgets/widgets/text_button_widget.dart';
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
           // child: TextButtonWidgetExample(),
           // child: OutlinedButtonWidgetExample(),
           // child: ElevatedButtonWidgetExample(),
-          child: IconButtonWidgetExample(),
+          // child: IconButtonWidgetExample(),
+          // child: GestureDetectorWidgetExample(),
+          child: FloatingActionButtonWidgetExample(),
         ),
       ),
     );
