@@ -46,11 +46,9 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
-	<dict>
-	    <key>NSAllowsLocalNetworking</key>
-	    <ture/>
-	    <key>NSAllowsArbitraryLoadsInWebContent</key>
-	    <ture/>
-	</dict>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>
