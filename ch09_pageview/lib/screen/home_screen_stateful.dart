@@ -11,10 +11,22 @@ class HomeScreenStateful extends StatefulWidget {
 }
 
 class _HomeScreenStateful extends State<HomeScreenStateful> {
+  final PageController pageController = PageController();
+
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 1), (timer) => print('실행!'));
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      int? nextPage = pageController.page?.toInt();
+      if (nextPage == null) return;
+      // if (nextPage == 4) nextPage = 0; elst nextPage++;
+      nextPage = (nextPage == 4) ? 0 : nextPage + 1;
+      pageController.animateToPage(
+        nextPage,
+        duration: Duration(seconds: 1),
+        curve: Curves.easeInOut,
+      );
+    });
   }
 
   @override
@@ -33,15 +45,16 @@ class _HomeScreenStateful extends State<HomeScreenStateful> {
     ); // 직접 오버레이 항목 설정 (overlays 사용)
     return Scaffold(
       body: PageView(
+        controller: pageController,
         children:
-        [1, 2, 3, 4, 5]
-            .map(
-              (num) => Image.asset(
-            'asset/img/image_$num.jpeg',
-            fit: BoxFit.cover,
-          ),
-        )
-            .toList(),
+            [1, 2, 3, 4, 5]
+                .map(
+                  (num) => Image.asset(
+                    'asset/img/image_$num.jpeg',
+                    fit: BoxFit.cover,
+                  ),
+                )
+                .toList(),
       ),
     );
   }
