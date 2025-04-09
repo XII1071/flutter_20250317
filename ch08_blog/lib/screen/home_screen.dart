@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (text.isNotEmpty) {
       final formattedUrl = text.startsWith('http') ? text : 'https://$text';
       _webViewController.loadRequest(Uri.parse(formattedUrl));
+      _urlController.text = "";
     }
   }
 
@@ -51,6 +52,18 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             icon: Icon(Icons.home),
           ),
+          IconButton(
+            onPressed: () {
+              _webViewController.goBack();
+            },
+            icon: Icon(Icons.arrow_back_ios),
+          ),
+          IconButton(
+            onPressed: () {
+              _webViewController.goForward();
+            },
+            icon: Icon(Icons.arrow_forward_ios),
+          ),
         ],
       ),
       body: Column(
@@ -67,7 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.symmetric(horizontal: 8),
                     ),
-                    onSubmitted: (_) => _loadUrl(),
+                    onSubmitted: (_) {
+                      _loadUrl();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
                   ),
                 ),
                 SizedBox(width: 8),
