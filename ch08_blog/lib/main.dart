@@ -2,7 +2,7 @@ import 'package:ch08_blog/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  // 플러터 프레임워크가 앱을 실행할 준비가 됐는지 확인 역할, 없어도 실행 됨.
+  // 플러터 프레임워크가 앱을 실행할 준비가 됐는지 확인 역할, 없어도 실행 됨.목적 webviewController 사용위함
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }

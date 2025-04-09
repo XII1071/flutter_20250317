@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final formattedUrl = text.startsWith('http') ? text : 'https://$text';
       _webViewController.loadRequest(Uri.parse(formattedUrl));
       _urlController.text = "";
+      FocusScope.of(context).unfocus();
     }
   }
 
