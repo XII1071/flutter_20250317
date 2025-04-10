@@ -1,11 +1,37 @@
+import 'package:ch11_random_dice/const/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final int number;
+
+  const HomeScreen({required this.number, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text('Home'));
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Center(child: Image.asset('asset/img/$number.png')),
+        SizedBox(height: 32.0),
+        Text(
+          '행운의 숫자',
+          style: TextStyle(
+            color: secondaryColor,
+            fontSize: 20.0,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        SizedBox(height: 12.0),
+        Text(
+          number.toString(),
+          style: TextStyle(
+            color: primaryColor,
+            fontSize: 60.0,
+            fontWeight: FontWeight.w200,
+          ),
+        ),
+      ],
+    );
   }
 }

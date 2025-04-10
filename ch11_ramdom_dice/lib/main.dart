@@ -1,11 +1,11 @@
+import 'package:ch11_random_dice/const/colors.dart';
 import 'package:ch11_random_dice/screen/root_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:ch11_random_dice/screen/home_screen.dart';
-import 'package:ch11_random_dice/const/colors.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: backgroundColor,
         sliderTheme: SliderThemeData(
