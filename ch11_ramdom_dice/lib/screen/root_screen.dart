@@ -4,6 +4,7 @@ import 'package:ch11_random_dice/screen/home_screen.dart';
 import 'package:ch11_random_dice/screen/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shake/shake.dart';
+import 'package:vibration/vibration.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -24,8 +25,8 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     controller = TabController(length: 2, vsync: this);
     controller!.addListener(tabListener);
     shakeDetector = ShakeDetector.autoStart(
-      shakeSlopTimeMS: 100, // 0.1초마다 감지
-      shakeThresholdGravity: threshold,
+      shakeSlopTimeMS: 100, //0.1초마다 감지
+      shakeThresholdGravity: threshold, //민감도
       onPhoneShake: onPhoneShake,
     );
   }
@@ -34,7 +35,11 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     final rand = Random();
     setState(() {
       number = rand.nextInt(6) + 1;
+      threshold = event.force > 10.0 ? 10.0 : event.force<0.1 ? 0.1 : event.force;
     });
+    if(Vibration.hasVibrator() != null) {
+    Vibration.vibrate(duration: 300);
+    }
   }
 
   // listener로  사용할 함수 선언
