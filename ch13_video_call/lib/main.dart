@@ -1,7 +1,18 @@
 import 'package:camera/camera.dart';
+import 'package:ch13_video_call/screen/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    ),
+  );
+}
+
+/*
 late List<CameraDescription> _cameras;
 
 Future<void> main() async {
@@ -59,3 +70,4 @@ class _CameraAppState extends State<CameraApp> {
     return MaterialApp(home: CameraPreview(controller));
   }
 }
+*/
