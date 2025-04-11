@@ -31,15 +31,14 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     );
   }
 
-  void onPhoneShake(ShakeEvent event) {
+  void onPhoneShake(ShakeEvent event) async {
     final rand = Random();
     setState(() {
-      number = rand.nextInt(6) + 1;
+      number = rand.nextInt(5) + 1;
       threshold = event.force > 10.0 ? 10.0 : event.force<0.1 ? 0.1 : event.force;
     });
-    if(Vibration.hasVibrator() != null) {
+
     Vibration.vibrate(duration: 300);
-    }
   }
 
   // listener로  사용할 함수 선언

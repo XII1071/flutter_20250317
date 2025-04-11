@@ -25,9 +25,9 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   bool showControls = false;
 
   @override
-  // covariant 키워드는 CustomVideoPlayer 클래스의 상속된 값도 허가해줍니다.
+  // covariant 키워드는 CustomVideoPlayer 클래스의 상속된 값도 허가해줍니다. 217p
   void didUpdateWidget(covariant CustomVideoPlayer oldWidget) {
-    super.didUpdateWidget(oldWidget);
+    super.didUpdateWidget(oldWidget); // 생성자의 매개변수가 변경시 생명주기 함수 호출
 
     // ➊ 새로 선택한 동영상이 같은 동영상인지 확인
     if (oldWidget.video.path != widget.video.path) {
@@ -108,18 +108,22 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                     Expanded(
                       // Slider가 남는 공간을 모두 차지하도록 구현
                       child: Slider(
+                        // 이벤트
                         onChanged: (double val) {
                           videoController!.seekTo(
                             Duration(seconds: val.toInt()),
                           );
                         },
+                        // 플레이되는 위치 값
                         value:
-                            videoController!.value.position.inSeconds
-                                .toDouble(),
+                        videoController!.value.position.inSeconds
+                            .toDouble(),
+                        // 동영상 시작
                         min: 0,
+                        // 동영상 끝
                         max:
-                            videoController!.value.duration.inSeconds
-                                .toDouble(),
+                        videoController!.value.duration.inSeconds
+                            .toDouble(),
                       ),
                     ),
                     renderTimeTextFromDuration(
@@ -155,9 +159,9 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                       // 재생 버튼
                       onPressed: onPlayPressed,
                       iconData:
-                          videoController!.value.isPlaying
-                              ? Icons.pause
-                              : Icons.play_arrow,
+                      videoController!.value.isPlaying
+                          ? Icons.pause
+                          : Icons.play_arrow,
                     ),
                     CustomIconButton(
                       // 앞으로 감기 버튼
@@ -184,7 +188,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
     // ➊ 되감기 버튼 눌렀을 때 실행할 함수
     final currentPosition = videoController!.value.position; // 현재 실행 중인 위치
 
-    Duration position = Duration(); // 0초로 실행 위치 초기화
+    Duration position = Duration(); // 새로운 플레이 위치를 담기 위한 변수
 
     if (currentPosition.inSeconds > 3) {
       // 현재 실행위치가 3초보다 길때만 3초 빼기
