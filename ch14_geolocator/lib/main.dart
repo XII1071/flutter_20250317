@@ -2,7 +2,5 @@ import 'package:ch14_geolocator/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: HomeScreen(),));
-
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen()));
 }
-

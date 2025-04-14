@@ -5,8 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class HomeScreen extends StatelessWidget {
   static final LatLng companyLatLng = LatLng(
     // ➊ 지도 초기화 위치
-    37.5233273, // 위도
-    126.921252, // 경도
+    35.1567008, // 위도
+    129.0594142, // 경도
   );
   static final Marker marker = Marker(
     markerId: MarkerId('company'),
@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                         // [출근하기] 버튼
                         onPressed: () async {
                           final curPosition =
-                              await Geolocator.getCurrentPosition(); // 현재 위치
+                          await Geolocator.getCurrentPosition(); // 현재 위치
 
                           final distance = Geolocator.distanceBetween(
                             curPosition.latitude, // 현재위치 위도
@@ -97,7 +97,8 @@ class HomeScreen extends StatelessWidget {
                                   TextButton(
                                     // 취소를 누르면 false 반환
                                     onPressed: () {
-                                      Navigator.of(context).pop(false);
+                                      // pop()은 Dialog 닫는 것, 그런데 false 리턴
+                                      Navigator.of(context).pop(1);
                                     },
                                     child: Text('취소'),
                                   ),
@@ -105,6 +106,7 @@ class HomeScreen extends StatelessWidget {
                                     TextButton(
                                       // 출근하기를 누르면 true 반환
                                       onPressed: () {
+                                        // pop()은 Dialog 닫는 것, 그런데 true 리턴
                                         Navigator.of(context).pop(true);
                                       },
                                       child: Text('출근하기'),
@@ -142,26 +144,21 @@ class HomeScreen extends StatelessWidget {
   }
 
   Future<String> checkPermission() async {
-    // 위치 서비스 활성화 여부 확인
-    final isLocationEnabled =
-        await Geolocator.isLocationServiceEnabled(); // 위치 서비스 활성화여부 확인
+    // 위치 서비스 활성화여부 확인
+    final isLocationEnabled = await Geolocator.isLocationServiceEnabled();
 
     // 위치 서비스 활성화 안 됨
     if (!isLocationEnabled) return '위치 서비스를 활성화해주세요.';
 
-
-    LocationPermission checkedPermission =
-        await Geolocator.checkPermission(); // 위치 권한 확인
-
+    // 위치 권한 확인
+    LocationPermission checkedPermission = await Geolocator.checkPermission();
+    // 위치 권한 거절됨
     if (checkedPermission == LocationPermission.denied) {
-      // 위치 권한 거절됨
-
       // 위치 권한 요청하기
       checkedPermission = await Geolocator.requestPermission();
 
-      if (checkedPermission == LocationPermission.denied) {
+      if (checkedPermission == LocationPermission.denied)
         return '위치 권한을 허가해주세요.';
-      }
     }
 
     // 위치 권한 거절됨 (앱에서 재요청 불가)
