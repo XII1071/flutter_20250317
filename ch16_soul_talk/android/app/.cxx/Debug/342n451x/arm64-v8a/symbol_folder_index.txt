@@ -1,0 +1,1 @@
+C:\workspace\spaceFlutter\flutter_20250317\ch16_soul_talk\build\app\intermediates\cxx\Debug\342n451x\obj\arm64-v8a

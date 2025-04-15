@@ -1,0 +1,2 @@
+C:/workspace/spaceFlutter/flutter_20250317/ch16_soul_talk/android/app/.cxx/Debug/342n451x/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/workspace/spaceFlutter/flutter_20250317/ch16_soul_talk/android/app/.cxx/Debug/342n451x/armeabi-v7a/CMakeFiles/rebuild_cache.dir
