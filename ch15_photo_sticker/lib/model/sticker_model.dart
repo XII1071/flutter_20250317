@@ -4,7 +4,10 @@ class StickerModel {
 
   StickerModel({required this.id, required this.imgPath});
 
+  // Dart 언어의 모든 클래스 조상 Object 메서드
+
   @override
+  // == 연산자를 재 정의함.
   bool operator ==(Object other) {
     // ➊ ==로 같은지 비교할 때 사용되는 로직
     return (other as StickerModel).id == id; // ID값이 같은 인스턴스끼리는 같은 스티커로 인식
