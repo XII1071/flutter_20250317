@@ -5,9 +5,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'dart:io';
 
-// private값까지 불러올 수 있음
+// 코드 생성(자동 생성 코드)를 사용하려면  part 파일을 지정
+// part 선언시 private값까지 불러올 수 있음
 part 'drift_database.g.dart';  // part 파일 지정
 
+// drift는 데이터베이스를 다루기 위한--
 @DriftDatabase(  // 사용할 테이블 등록
   tables: [
     Schedules,

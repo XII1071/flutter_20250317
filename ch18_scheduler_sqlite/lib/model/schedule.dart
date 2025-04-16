@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 
+// SQLite에서 사용하는 Schedules 테이블 선언
 class Schedules extends Table {
   IntColumn get id => integer().autoIncrement()(); // PRIMARY KEY, 정수 열
 

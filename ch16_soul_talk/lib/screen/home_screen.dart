@@ -195,12 +195,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // 채팅 메시지 목록을 그리는 위젯
   Widget buildMessageList(List<MessageModel> messages) {
-    return ListView.separated( // 각 아이템 사이에 구분선(또는 여백) 넣음
+    return ListView.separated(
+      // 각 아이템 사이에 구분선(또는 여백) 넣음
       controller: scrollController, // 자동 스크롤 연동
       itemCount: messages.length + 1, // 전체 메시지  + 1(로고 같은 것 추가)
       itemBuilder: (context, index) => index == 0 // 각 인덱스에 어떤 위젯을 그릴지 정하는 함수
           ? buildLogo() // index 0 일 때
-          : buildMessageItem( //  index 0 아닐 때
+          : buildMessageItem(
+              //  index 0 아닐 때
               message: messages[index - 1],
               prevMessage: index > 1 ? messages[index - 2] : null,
               index: index - 1,
@@ -223,9 +225,9 @@ class _HomeScreenState extends State<HomeScreen> {
   // 채팅 메시지 하나를 어떻게 그릴지 정하는 위젯
   // prevMessage가 있는 이유는, 날짜가 바뀌었을 때 날짜 구분선(DateDivider)을 넣기 위함
   Widget buildMessageItem({
-    MessageModel? prevMessage,      // 이전 메시지 (날짜 비교용)
-    required MessageModel message,  // 현재 메시지 (말풍선 출력용)
-    required int index,             // 현재 메시지 인덱스
+    MessageModel? prevMessage, // 이전 메시지 (날짜 비교용)
+    required MessageModel message, // 현재 메시지 (말풍선 출력용)
+    required int index, // 현재 메시지 인덱스
   }) {
     final isMine = message.isMine; // 내가 보낸 메시지인지 확인
     // 날짜 구분선 표시 여부 판단
@@ -239,7 +241,8 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: DateDivider(date: message.date),
           ),
-        Padding(  // 메시지 말풍선, 실제 말풍선은 Message 위젯으로 표시
+        Padding(
+          // 메시지 말풍선, 실제 말풍선은 Message 위젯으로 표시
           padding: EdgeInsets.only(
               left: isMine ? 64.0 : 16.0, right: isMine ? 16.0 : 64.0),
           child: Message(

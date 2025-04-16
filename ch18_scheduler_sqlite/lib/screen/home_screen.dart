@@ -74,17 +74,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     // 화면에 보이는 값들만 렌더링하는 리스트
                     itemCount: snapshot.data!.length, // 리스트에 입력할 값들의 총 개수
                     itemBuilder: (context, index) {
-                      final schedule =
-                          snapshot.data![index]; // 현재 index에 해당되는 일정
+                      // 현재 index에 해당되는 일정
+                      final schedule = snapshot.data![index];
+                      // 위젯을 밀어서 삭제하는 기능을 제공 
                       return Dismissible(
-                        key: ObjectKey(schedule.id),
                         // 유니크한 키값
-                        direction: DismissDirection.startToEnd,
+                        key: ObjectKey(schedule.id),
+
                         // 밀기 방향 (오른쪽에서 왼쪽으로)
+                        direction: DismissDirection.startToEnd,
+
+                        // 밀기 했을 때 실행할 함수
                         onDismissed: (DismissDirection direction) {
-                          // 밀기 했을 때 실행할 함수
                           GetIt.I<LocalDatabase>().removeSchedule(schedule.id);
                         },
+
                         child: Padding(
                           padding: const EdgeInsets.only(
                             bottom: 8.0,

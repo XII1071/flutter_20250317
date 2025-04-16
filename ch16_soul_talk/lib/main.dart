@@ -12,7 +12,7 @@ void main() async {
   // 앱만의 저장 공간이며, 앱의 크기와 관련, 파일 저장에 관련된 기능을 구현한 클래스
   final dir = await getApplicationDocumentsDirectory();
 
-  // Isar 인스턴스에서 사용하고 싶은 모든 스키마를 지정: Isar는 로컬 데이터베이스
+  // Isar 인스턴스에서 사용하고 싶은 모든 스키마를 지정: Isar는 flutter에서 사용가능한 고성능 NoSQL
   final isar = await Isar.open(
     [MessageModelSchema],
     directory: dir.path,

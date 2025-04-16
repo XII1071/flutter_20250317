@@ -71,9 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget renderBody() {
     if (image != null) {
+      // ➊ 위젯을 이미지로 저장하기 위해 사용
+      // 다른 변경되지 않은 위젯까지 재렌더링을 할 때 렌더링 성능을 최적화시킴
       return RepaintBoundary(
-        // ➊ 위젯을 이미지로 저장하기 위해 사용
-        // 다른 변경되지 않은 위젯까지 재 렌더링을 할 때 렌더링 성능을 최적화 시킴
         key: imgKey,
         child: Positioned.fill(
           // InteractiveViewer 이미지 확대할 때
@@ -82,8 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: StackFit.expand,
               children: [
                 Image.file(File(image!.path), fit: BoxFit.fitWidth),
+                // ... spread operator:여러개 항목을 컬렉션에 간편하게 추가.
                 ...stickers.map(
-                      (sticker) => Center(
+                  (sticker) => Center(
                     child: EmoticonSticker(
                       key: ObjectKey(sticker.id),
                       onTransform: () {
@@ -111,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  // 메인사진에 추가되는 이모티콘 목록을 갱신하는 함수(이모티콘 선택할 때)
   void onEmoticonTap(int index) async {
     setState(() {
       stickers = {
@@ -124,14 +126,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onSaveImage() async {
+    // RepaintBoundary`를 사용하여 렌더링 성능을 최적화
     RenderRepaintBoundary boundary =
-    imgKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+        imgKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(); // ➊ 바운더리를 이미지로 변경
     ByteData? byteData = await image.toByteData(
       format: ui.ImageByteFormat.png,
     ); // ➋ byte data 형태로 형태 변경
     Uint8List pngBytes =
-    byteData!.buffer.asUint8List(); // ➌ Unit8List 형태로 형태 변경
+        byteData!.buffer.asUint8List(); // ➌ Unit8List : 버퍼 형태로 형태 변경
 
     await ImageGallerySaverPlus.saveImage(pngBytes, quality: 100);
 

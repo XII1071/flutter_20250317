@@ -16,9 +16,7 @@ class MainCalendar extends StatelessWidget {
       // 날짜 선택 시 실행할 함수
       selectedDayPredicate:
           (date) => //선택된 날짜를 구분할 로직
-              date.year == selectedDate.year &&
-              date.month == selectedDate.month &&
-              date.day == selectedDate.day,
+            date.year == selectedDate.year && date.month == selectedDate.month && date.day == selectedDate.day,
       firstDay: DateTime(1800, 1, 1),
       lastDay: DateTime(3000, 1, 1),
       focusedDay: DateTime.now(),
@@ -42,7 +40,7 @@ class MainCalendar extends StatelessWidget {
         weekendDecoration: BoxDecoration(
           // 주말 날짜 스타일
           borderRadius: BorderRadius.circular(6.0),
-          color: LIGHT_GREY_COLOR,
+          color: Colors.red[50],
         ),
         selectedDecoration: BoxDecoration(
           // 선택된 날짜 스타일

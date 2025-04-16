@@ -27,7 +27,7 @@ class Footer extends StatelessWidget {
                 },
                 child: Image.asset(
                   'asset/img/emoticon_${index + 1}.png',
-                  height: 100,
+                  height: 70,
                 ),
               ),
             ),

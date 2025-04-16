@@ -4,7 +4,7 @@ class StickerModel {
 
   StickerModel({required this.id, required this.imgPath});
 
-  // Dart 언어의 모든 클래스 조상 Object 메서드
+  // Dart 언어의 모든 클래스 조상 Object
 
   @override
   // == 연산자를 재 정의함.
