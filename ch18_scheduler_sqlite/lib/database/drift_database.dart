@@ -5,8 +5,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'dart:io';
 
-// private값까지 불러올 수 있음
-part 'drift_database.g.dart'; // part 파일 지정
+// 코드 생성(자동 생성 코드)을 사용하려면 part파일을 지정
+// part선언시 private값까지 불러올 수 있음
+part 'drift_database.g.dart';
 
 // drift는 데이터베이스를 다루기 위한 객체. 직접 SQL을 작성하지 않아도 SQLite를 사용가능
 @DriftDatabase(
@@ -34,7 +35,7 @@ class LocalDatabase extends _$LocalDatabase {
   int get schemaVersion => 1;
 }
 
-// SQLite에 의해 생성된 로컬 데이터베이스에 접근하는 함수
+// SQLite에 접속 하기 위한 함수
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     // 앱에서 저장할 데이터베이스 경로 추출
