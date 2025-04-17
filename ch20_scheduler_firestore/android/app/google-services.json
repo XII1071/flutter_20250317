@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "453897130990",
+    "project_id": "firestore-testor0417",
+    "storage_bucket": "firestore-testor0417.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453897130990:android:474a3d922451091edb34ff",
+        "android_client_info": {
+          "package_name": "com.example.ch20_scheduler_firestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPAsU2YvWEm8P3ylA63GZe0eBT6yOB6II"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
