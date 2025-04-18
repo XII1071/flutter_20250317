@@ -18,7 +18,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(  // ➋ 세로로 텍스트와 텍스트 필드를 위치
+    return Column(  // 세로로 텍스트와 텍스트 필드를 위치
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -31,12 +31,12 @@ class CustomTextField extends StatelessWidget {
         Expanded(
           flex: isTime ? 0 : 1, // ➏
           child: TextFormField(
-            onSaved: onSaved,  // ➊ 폼 저장했을 때 실행할 함수
+            onSaved: onSaved,  // 폼 저장했을 때 실행할 함수
             validator: validator,
             cursorColor: Colors.grey,    // 커서 색상 변경
-            maxLines: isTime ? 1 : null, // ➊ 시간 관련 텍스트 필드가 아니면 한 줄이상 작성 가능
-            expands: !isTime, // ➋ 시간 관련 텍스트 필드는 공간 최대 차지
-            keyboardType: isTime ? TextInputType.number : TextInputType.multiline, // ➌ 시간 관련 텍스트 필드는 기본 숫자 키보드 아니면 일반 글자 키보드 보여주기
+            maxLines: isTime ? 1 : null, // 시간 관련 텍스트 필드가 아니면 한 줄이상 작성 가능
+            expands: !isTime, // 시간 관련 텍스트 필드는 공간 최대 차지
+            keyboardType: isTime ? TextInputType.number : TextInputType.multiline, // 시간 관련 텍스트 필드는 기본 숫자 키보드 아니면 일반 글자 키보드 보여주기
             inputFormatters: isTime
                 ? [
               FilteringTextInputFormatter.digitsOnly,

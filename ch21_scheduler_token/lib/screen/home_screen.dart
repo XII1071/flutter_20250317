@@ -9,7 +9,7 @@ import 'package:ch21_scheduler_token/provider/schedule_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   DateTime selectedDate = DateTime.utc(
-    // ➋ 선택된 날짜를 관리할 변수
+    // 선택된 날짜를 관리할 변수
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
@@ -21,18 +21,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // 프로바이더 변경이 있을 때마다 build() 함수 재실행
     final provider = context.watch<ScheduleProvider>();
-    final selectedDate = provider.selectedDate; // ➌ 선택된 날짜 가져오기
+    final selectedDate = provider.selectedDate; // 선택된 날짜 가져오기
     final schedules = provider.cache[selectedDate] ?? [];
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        // ➊ 새 일정 버튼
+        // 새 일정 버튼
         backgroundColor: PRIMARY_COLOR,
         onPressed: () {
           showModalBottomSheet(
-            // ➋ BottomSheet 열기
+            // BottomSheet 열기
             context: context,
-            isDismissible: true, // ➌ 배경 탭했을 때 BottomSheet 닫기
+            isDismissible: true, // 배경 탭했을 때 BottomSheet 닫기
             isScrollControlled: true,
             builder:
                 (_) => ScheduleBottomSheet(
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 8.0),
             TodayBanner(
-              // ➊ 배너 추가하기
+              // 배너 추가하기
               selectedDate: selectedDate,
               count: 0,
             ),
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                       provider.deleteSchedule(
                         date: selectedDate,
                         id: schedule.id,
-                      ); // ➊
+                      ); //
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(

@@ -3,8 +3,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:ch21_scheduler_token/const/colors.dart';
 
 class MainCalendar extends StatelessWidget {
-  final OnDaySelected onDaySelected; // ➊ 날짜 선택 시 실행할 함수
-  final DateTime selectedDate; // ➋ 선택된 날짜
+  final OnDaySelected onDaySelected; // 날짜 선택 시 실행할 함수
+  final DateTime selectedDate; // 선택된 날짜
 
   const MainCalendar({super.key, 
     required this.onDaySelected,
@@ -16,15 +16,15 @@ class MainCalendar extends StatelessWidget {
     return TableCalendar(
       locale: 'ko_kr',
       onDaySelected: onDaySelected,
-      // ➌ 날짜 선택 시 실행할 함수
+      // 날짜 선택 시 실행할 함수
       selectedDayPredicate: (date) => // ➍ 선택된 날짜를 구분할 로직
       date.year == selectedDate.year &&
           date.month == selectedDate.month &&
           date.day == selectedDate.day,
-      firstDay: DateTime(1800, 1, 1),  // ➊ 첫째 날
-      lastDay: DateTime(3000, 1, 1),   // ➋ 마지막 날
+      firstDay: DateTime(1800, 1, 1),  // 첫째 날
+      lastDay: DateTime(3000, 1, 1),   // 마지막 날
       focusedDay: DateTime.now(),
-      headerStyle: HeaderStyle(  // ➊ 달력 최상단 스타일
+      headerStyle: HeaderStyle(  // 달력 최상단 스타일
         titleCentered: true,  // 제목 중앙에 위치하기
         formatButtonVisible: false,  // 달력 크기 선택 옵션 없애기
         titleTextStyle: TextStyle(  // 제목 글꼴
@@ -34,11 +34,11 @@ class MainCalendar extends StatelessWidget {
       ),
       calendarStyle: CalendarStyle(
         isTodayHighlighted: false,
-        defaultDecoration: BoxDecoration(  // ➋ 기본 날짜 스타일
+        defaultDecoration: BoxDecoration(  // 기본 날짜 스타일
           borderRadius: BorderRadius.circular(6.0),
           color: LIGHT_GREY_COLOR,
         ),
-        weekendDecoration: BoxDecoration(  // ➌ 주말 날짜 스타일
+        weekendDecoration: BoxDecoration(  // 주말 날짜 스타일
           borderRadius: BorderRadius.circular(6.0),
           color: LIGHT_GREY_COLOR,
         ),
@@ -61,7 +61,7 @@ class MainCalendar extends StatelessWidget {
           fontWeight: FontWeight.w600,
           color: PRIMARY_COLOR,
         ),
-      ), // ➌ 화면에 보여지는 날
+      ), // 화면에 보여지는 날
     );
   }
 }

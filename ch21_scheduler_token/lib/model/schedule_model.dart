@@ -16,7 +16,7 @@ class ScheduleModel {
 
   // named 생성자
   ScheduleModel.fromJson({
-    // ➊ JSON으로부터 모델을 만들어내는 생성자
+    // JSON으로부터 모델을 만들어내는 생성자
     required Map<String, dynamic> json,
   }) : id = json['id'],
        content = json['content'],
@@ -25,7 +25,7 @@ class ScheduleModel {
        endTime = json['endTime'];
 
   Map<String, dynamic> toJson() {
-    // ➋ 모델을 다시 JSON으로 변환하는 함수
+    // 모델을 다시 JSON으로 변환하는 함수
     return {
       'id': id,
       'content': content,

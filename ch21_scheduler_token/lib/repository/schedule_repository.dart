@@ -14,13 +14,17 @@ class ScheduleRepository {
       'http://${Platform.isAndroid ? '10.100.204.26' : 'localhost'}:3000/schedule';
 
   // 특정 날짜에 해당되는 일정 리스트를 서버에서 가져 올 때
-  Future<List<ScheduleModel>> getSchedules({required DateTime date}) async {
+  Future<List<ScheduleModel>> getSchedules({
+    required String accessToken,
+    required DateTime date,
+  }) async {
     final resp = await _dio.get(
       _targetUrl,
       queryParameters: {
         'date':
             '${date.year}${date.month.toString().padLeft(2, '0')}${date.day.toString().padLeft(2, '0')}',
       },
+      options: Options(headers: {'authorization': 'Bearer $accessToken'}),
     );
 
     // 응답 처리 : 응답받은 json배열을 ScheduleModel 리스트로 변환
@@ -30,15 +34,29 @@ class ScheduleRepository {
   }
 
   // 새로운 일정을 서버에 생성할 때
-  Future<String> createSchedule({required ScheduleModel schedule}) async {
+  Future<String> createSchedule({
+    required String accessToken,
+    required ScheduleModel schedule,
+  }) async {
     final json = schedule.toJson(); // 모델을 json으로 변환
-    final resp = await _dio.post(_targetUrl, data: json); // POST 요청
+    final resp = await _dio.post(
+      _targetUrl,
+      data: json,
+      options: Options(headers: {'authorization': 'Bearer $accessToken'}),
+    ); // POST 요청
     return resp.data?['id']; // 요청 결과 ScheduleModel의 id 받음
   }
 
   // 특정 ID를 가진 일정을 삭제
-  Future<String> deleteSchedule({required String id}) async {
-    final resp = await _dio.delete(_targetUrl, data: {'id': id});
+  Future<String> deleteSchedule({
+    required String accessToken,
+    required String id,
+  }) async {
+    final resp = await _dio.delete(
+      _targetUrl,
+      data: {'id': id},
+      options: Options(headers: {'authorization': 'Bearer $accessToken'}),
+    );
 
     return resp.data?['id']; // 삭제된 ID값 반환
   }
