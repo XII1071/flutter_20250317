@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ch19_scheduler_api/component/custom_text_field.dart';
 import 'package:ch19_scheduler_api/const/colors.dart';
-import 'package:drift/drift.dart' hide Column;
-import 'package:get_it/get_it.dart';
-import 'package:ch19_scheduler_api/database/drift_database.dart';
 import 'package:ch19_scheduler_api/model/schedule_model.dart';
 import 'package:provider/provider.dart';
 import 'package:ch19_scheduler_api/provider/schedule_provider.dart';
@@ -13,8 +10,8 @@ class ScheduleBottomSheet extends StatefulWidget {
 
   const ScheduleBottomSheet({
     required this.selectedDate,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<ScheduleBottomSheet> createState() => _ScheduleBottomSheetState();
@@ -147,7 +144,7 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
   } // 시간값 검증
 
   String? contentValidator(String? val) {
-    if (val == null || val.length == 0) {
+    if (val == null || val.isEmpty) {
       return '값을 입력해주세요';
     }
 

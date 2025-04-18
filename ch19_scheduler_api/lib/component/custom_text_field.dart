@@ -13,8 +13,8 @@ class CustomTextField extends StatelessWidget {
     required this.isTime,
     required this.onSaved,
     required this.validator,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

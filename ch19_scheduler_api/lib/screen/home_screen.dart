@@ -4,8 +4,6 @@ import 'package:ch19_scheduler_api/component/schedule_card.dart';
 import 'package:ch19_scheduler_api/component/today_banner.dart';
 import 'package:ch19_scheduler_api/component/schedule_bottom_sheet.dart';
 import 'package:ch19_scheduler_api/const/colors.dart';
-import 'package:get_it/get_it.dart';
-import 'package:ch19_scheduler_api/database/drift_database.dart';
 import 'package:provider/provider.dart';
 import 'package:ch19_scheduler_api/provider/schedule_provider.dart';
 
@@ -16,6 +14,8 @@ class HomeScreen extends StatelessWidget {
     DateTime.now().month,
     DateTime.now().day,
   );
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +47,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           // 달력과 리스트를 세로로 배치
           children: [
+            Text("ch19"),
             MainCalendar(
               selectedDate: selectedDate, // 선택된 날짜 전달하기
               // 날짜가 선택됐을 때 실행할 함수
