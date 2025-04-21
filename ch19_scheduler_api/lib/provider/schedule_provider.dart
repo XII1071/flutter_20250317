@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 // Flutter의 상태관리 패턴 중 하나인 Provider를 활용해 일정 데이터의 상태를 관리.
 // ChangeNotifier를 상속할 경우 notifyListeners()를 호출하면 UI가 자동으로 갱신.
 class ScheduleProvider extends ChangeNotifier {
+  // Repository: 네트워크를 통해서 데이터 접근하여 데이타를 가져오는 객체
   final ScheduleRepository repository;
 
   // 현재 사용하고 있는 날짜. 앱에서 오늘 날짜로 초기화
@@ -18,7 +19,7 @@ class ScheduleProvider extends ChangeNotifier {
   // 날짜별로 일정들을 저장해 두는 임시 저장소(메모리 캐시:속도 개선 효과)
   Map<DateTime, List<ScheduleModel>> cache = {};
 
-  // 기본 생성자: 오늘 날짜의 일정을 불러옴.
+  // 기본 생성자, Provider: Repository를 통해 가져온 데이터를 신속하게 화면에 갱신하는 객체
   ScheduleProvider({required this.repository}) : super() {
     getSchedules(date: selectedDate);
   }

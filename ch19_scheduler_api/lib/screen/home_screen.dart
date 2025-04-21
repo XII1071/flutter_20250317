@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           // 달력과 리스트를 세로로 배치
           children: [
-            Text("ch19"),
+            Text("ch19_scheduler_api"),
             MainCalendar(
               selectedDate: selectedDate, // 선택된 날짜 전달하기
               // 날짜가 선택됐을 때 실행할 함수

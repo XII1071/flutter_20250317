@@ -1,6 +1,5 @@
 import 'package:ch21_scheduler_token/const/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class LoginTextField extends StatelessWidget {
   final String? hintText;
@@ -13,8 +12,8 @@ class LoginTextField extends StatelessWidget {
     required this.validator,
     this.obscureText = false,
     this.hintText,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

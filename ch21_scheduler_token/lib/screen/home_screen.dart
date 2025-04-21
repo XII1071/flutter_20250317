@@ -7,15 +7,24 @@ import 'package:ch21_scheduler_token/const/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:ch21_scheduler_token/provider/schedule_provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+  @override
+  State createState() => _HomeScreen();
+}
+
+class _HomeScreen extends State<HomeScreen> {
   DateTime selectedDate = DateTime.utc(
-    // 선택된 날짜를 관리할 변수
-    DateTime.now().year,
-    DateTime.now().month,
-    DateTime.now().day,
+    DateTime.now().year,DateTime.now().month,DateTime.now().day,
   );
 
-  HomeScreen({super.key});
+  @override
+  void initState() {
+    super.initState();
+    // main함수에서 생성된 Provider의 인스턴스를 호출
+    final provider = context.read<ScheduleProvider>();
+    provider.getSchedules(date: selectedDate);
+  }
 
   @override
   Widget build(BuildContext context) {

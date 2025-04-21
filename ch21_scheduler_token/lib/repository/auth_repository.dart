@@ -40,7 +40,7 @@ class AuthRepository {
     final encoded = stringToBase64.encode(emailAndPassword);
     final result = await _dio.post(
       '$_targetUrl/login/email',
-      options: Options(headers: {'authrization': 'Basic $encoded'}),
+      options: Options(headers: {'authorization': 'Basic $encoded'},)
     );
     return (
       refreshToken: result.data['refreshToken'] as String,

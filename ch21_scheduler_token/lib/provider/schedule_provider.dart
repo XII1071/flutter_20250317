@@ -25,7 +25,7 @@ class ScheduleProvider extends ChangeNotifier {
   ScheduleProvider({
     required this.scheduleRepository,
     required this.authRepository,
-  }) : super() {}
+  }) : super();
 
   updateTokens({String? refreshToken, String? accessToken}) {
     if (refreshToken != null) this.refreshToken = refreshToken;

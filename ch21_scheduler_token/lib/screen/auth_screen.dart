@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+  const AuthScreen({super.key});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -22,6 +22,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // ScheduleProvider를 사용하기 위해 첫번째로 인스턴스 만듦.
     final provider = context.watch<ScheduleProvider>();
 
     return Scaffold(
@@ -38,7 +39,7 @@ class _AuthScreenState extends State<AuthScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'assets/img/logo.png',
+                  'asset/img/logo.png',
                   width: MediaQuery.of(context).size.width * 0.5,
                 ),
               ),
@@ -79,8 +80,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     return '비밀번호를 입력해주세요.';
                   }
 
-                  if (val!.length < 4 || val.length > 8) {
-                    return '비밀번호는 4~8자 사이로 입력 해주세요!';
+                  if (val!.isEmpty || val.length > 8) {
+                    return '비밀번호는 1~8자 사이로 입력 해주세요!';
                   }
                   return null;
                 },
@@ -89,7 +90,11 @@ class _AuthScreenState extends State<AuthScreen> {
               const SizedBox(height: 16.0),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
                   backgroundColor: SECONDARY_COLOR,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)
+                  )
                 ),
                 onPressed: () async {
                   onRegisterPress(provider);
@@ -98,7 +103,11 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: SECONDARY_COLOR,
+                    foregroundColor: Colors.white,
+                    backgroundColor: SECONDARY_COLOR,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)
+                    )
                 ),
                 onPressed: () async {
                   onLoginPress(provider);
@@ -121,7 +130,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
     try {
       await provider.register(email: email, password: password);
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       message = e.response?.data['message'] ?? '알 수 없는 오류가 발생했습니다.';
     } catch (e) {
       message = '알 수 없는 오류가 발생했습니다.';
@@ -147,7 +156,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
     try {
       await provider.login(email: email, password: password);
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       message = e.response?.data['message'] ?? '알 수 없는 오류가 발생했습니다.';
     } catch (e) {
       message = '알 수 없는 오류가 발생했습니다.';

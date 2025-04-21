@@ -8,10 +8,7 @@ import 'package:ch21_scheduler_token/provider/schedule_provider.dart';
 class ScheduleBottomSheet extends StatefulWidget {
   final DateTime selectedDate;
 
-  const ScheduleBottomSheet({
-    required this.selectedDate,
-    super.key,
-  });
+  const ScheduleBottomSheet({required this.selectedDate, super.key});
 
   @override
   State<ScheduleBottomSheet> createState() => _ScheduleBottomSheetState();
@@ -33,12 +30,17 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
       key: formKey, // Form을 조작할 키값
       child: SafeArea(
         child: Container(
-          height: MediaQuery.of(context).size.height / 2 +
+          height:
+              MediaQuery.of(context).size.height / 2 +
               bottomInset, // 화면 반 높이에 키보드 높이 추가하기
           color: Colors.white,
           child: Padding(
-            padding:
-                EdgeInsets.only(left: 8, right: 8, top: 8, bottom: bottomInset),
+            padding: EdgeInsets.only(
+              left: 8,
+              right: 8,
+              top: 8,
+              bottom: bottomInset,
+            ),
             child: Column(
               // 시간 관련 텍스트 필드와 내용관련 텍스트 필드 세로로 배치
               children: [
@@ -105,13 +107,15 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
     );
   }
 
-  void onSavePressed(BuildContext context) async {    if (formKey.currentState!.validate()) {
+  void onSavePressed(BuildContext context) async {
+    if (formKey.currentState!.validate()) {
       // 폼 검증하기
       formKey.currentState!.save(); // 폼 저장하기
 
       context.read<ScheduleProvider>().createSchedule(
         schedule: ScheduleModel(
-          id: 'new_model',  // 임시 ID
+          id: 'new_model',
+          // 임시 ID
           content: content!,
           date: widget.selectedDate,
           startTime: startTime!,
