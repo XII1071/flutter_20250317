@@ -10,7 +10,7 @@ class AuthRepository {
   // Android에서는 에뮬레이터가 localhost에 접근 불가. 10.0.0.2를 localhost로 대체:API 서버 URL
   // node에서 돌아가는 로컬 아이피를 적용하면 됨.
   final _targetUrl =
-      'http://${Platform.isAndroid ? '10.100.204.26' : 'localhost'}:3000/auth';
+      'http://${Platform.isAndroid ? '10.100.204.157' : 'localhost'}:3000/auth';
 
   // 회원 가입 요청을 보내고, 서버로부터 accessToken, refreshToken을 반환하는 비동기 함수.
   // Future에서 ()는 레코드라는 구조이고, {}는 2개의 값을 묶어서 튜플 형태로 반환 107p
