@@ -122,17 +122,16 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   onRegisterPress(ScheduleProvider provider) async {
-    if (!saveAndValidateForm()) {
-      return;
-    }
+    // 입력한 email, password 값들이 비정상적일 경우 false 반환
+    if (!saveAndValidateForm()) return;
 
     String? message;
 
     try {
       await provider.register(email: email, password: password);
-    } on DioException catch (e) {
+    } on DioException catch (e) { // repository 문제 발생
       message = e.response?.data['message'] ?? '알 수 없는 오류가 발생했습니다.';
-    } catch (e) {
+    } catch (e) { // provider 문제 발생
       message = '알 수 없는 오류가 발생했습니다.';
     } finally {
       if (message != null) {
@@ -148,9 +147,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   onLoginPress(ScheduleProvider provider) async {
-    if (!saveAndValidateForm()) {
-      return;
-    }
+    if (!saveAndValidateForm()) return;
 
     String? message;
 
@@ -174,12 +171,8 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   bool saveAndValidateForm() {
-    if (!formKey.currentState!.validate()) {
-      return false;
-    }
-
+    if (!formKey.currentState!.validate()) return false;
     formKey.currentState!.save();
-
     return true;
   }
 }

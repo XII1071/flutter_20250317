@@ -28,7 +28,10 @@ void main() async {
     // notifyListeners() 호출된 곳에서 화면을 갱신하기 위해 선언됨.
     ChangeNotifierProvider(
       create: (_) => scheduleProvider,
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: AuthScreen()),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: AuthScreen()
+      ),
     ),
   );
 }
